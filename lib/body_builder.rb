@@ -7,22 +7,22 @@ require 'body_builder/context_helpers'
 
 module BodyBuilder
   class Application
-		def call(env)
-			controller, action = get_controller_and_action(env)
-			response = controller.new.send(action)
-			[ 200, { 'Content-Type' => 'text/html; charset=utf-8' }, [response] ]
-		end
+    def call(env)
+      controller, action = get_controller_and_action(env)
+      response = controller.new.send(action)
+      [ 200, { 'Content-Type' => 'text/html; charset=utf-8' }, [response] ]
+    end
 
-		private
+    private
 
-		def get_controller_and_action(env)
-			_,controller, action = env["PATH_INFO"].split('/')
-			controller = controller.to_camel_case + 'Controller'
-			[Object.const_get(controller), action]
-		end
-	end
+    def get_controller_and_action(env)
+      _,controller, action = env["PATH_INFO"].split('/')
+      controller = controller.to_camel_case + 'Controller'
+      [Object.const_get(controller), action]
+    end
+  end
   
   def self.version
-  	BobyBuilder::VERSION
+    BobyBuilder::VERSION
   end
 end
