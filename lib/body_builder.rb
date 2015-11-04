@@ -21,7 +21,7 @@ module BodyBuilder
       [Object.const_get(controller), action]
     end
   end
-  
+
   def self.version
     BobyBuilder::VERSION
   end
