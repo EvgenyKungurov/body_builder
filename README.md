@@ -1,4 +1,5 @@
-# LiveQueue
+# BodyBuilder
+![alt tag](https://raw.github.com/EvgenyKungurov/body_builder/examples/public/BodyBuilderFramework.jpg)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/body_builder`. To experiment with that code, run `bin/console` for an interactive prompt.
 
