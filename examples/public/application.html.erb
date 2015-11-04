@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+<%= render :head %>
+    <div id="wrapper">
+<%= render :nav_top %>        
+<%= render :nav_left %>
+      <div id="page-wrapper">
+            <div id="page-inner">
+<%= yield %>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div id="reviews" class="carousel slide" data-ride="carousel">
+
+                                    <div class="carousel-inner">
+                                        <div class="item active">
+
+                                            <div class="col-md-10 col-md-offset-1">
+
+                                                <h4><i class="fa fa-quote-left"></i>Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit onec molestie non sem vel condimentum. <i class="fa fa-quote-right"></i></h4>
+                                                <div class="user-img pull-right">
+                                                    <img src="/img/user.gif" alt="" class="img-u image-responsive" />
+                                                </div>
+                                                <h5 class="pull-right"><strong class="c-black">Lorem Dolor</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-md-10 col-md-offset-1">
+
+                                                <h4><i class="fa fa-quote-left"></i>Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing elit onec molestie non sem vel condimentum. <i class="fa fa-quote-right"></i></h4>
+                                                <div class="user-img pull-right">
+                                                    <img src="/img/user.png" alt="" class="img-u image-responsive" />
+                                                </div>
+                                                <h5 class="pull-right"><strong class="c-black">Lorem Dolor</strong></h5>
+                                            </div>
+
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-md-10 col-md-offset-1">
+
+                                                <h4><i class="fa fa-quote-left"></i>Lorem ipsum dolor sit amet, consectetur adipiscing  Lorem ipsum dolor sit amet, consectetur adipiscing elit onec molestie non sem vel condimentum. <i class="fa fa-quote-right"></i></h4>
+                                                <div class="user-img pull-right">
+                                                    <img src="/img/user.gif" alt="" class="img-u image-responsive" />
+                                                </div>
+                                                <h5 class="pull-right"><strong class="c-black">Lorem Dolor</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--INDICATORS-->
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#reviews" data-slide-to="0" class="active"></li>
+                                        <li data-target="#reviews" data-slide-to="1"></li>
+                                        <li data-target="#reviews" data-slide-to="2"></li>
+                                    </ol>
+                                    <!--PREVIUS-NEXT BUTTONS-->
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- /. ROW  -->
+                        <hr />
+
+                        <div class="panel panel-default">
+
+                            <div id="carousel-example" class="carousel slide" data-ride="carousel" style="border: 5px solid #000;">
+
+                                <div class="carousel-inner">
+                                    <div class="item active">
+
+                                        <img src="/img/slideshow/1.jpg" alt="" />
+
+                                    </div>
+                                    <div class="item">
+                                        <img src="/img/slideshow/2.jpg" alt="" />
+
+                                    </div>
+                                    <div class="item">
+                                        <img src="/img/slideshow/3.jpg" alt="" />
+
+                                    </div>
+                                </div>
+                                <!--INDICATORS-->
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example" data-slide-to="2"></li>
+                                </ol>
+                                <!--PREVIUS-NEXT BUTTONS-->
+                                <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-example" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+<%= render :chat %>
+                </div>
+                <div class="row">
+<%= render :info %>
+<%= render :notification_panel %>
+                    
+                    
+
+                        </div>
+                    </div>
+                </div>
+                <!--/.Row-->
+                <hr />
+                <div class="row">
+<%= render :table %>
+                    
+                    <div class="col-md-4">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                Recent Comments Example
+                            </div>
+                            <div class="panel-body">
+                                <ul class="media-list">
+
+                                    <li class="media">
+
+                                        <div class="media-body">
+
+                                            <div class="media">
+                                                <a class="pull-left" href="#">
+                                                    <img class="media-object img-circle img-comments" src="/img/user.png" />
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Nulla gravida vitae  </h4>
+                                                    Donec sit amet ligula enim. Duis vel condimentum massa.
+              
+              <!-- Nested media object -->
+                                                    <div class="media">
+                                                        <a class="pull-left" href="#">
+                                                            <img class="media-object img-circle img-comments" src="/img/user.gif" />
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <h4 class="media-heading">Amet ligula enim</h4>
+                                                            Donec sit amet ligula enim .
+                                                        </div>
+                                                    </div>
+                                                    <div class="media">
+                                                        <a class="pull-left" href="#">
+                                                            <img class="media-object img-circle img-comments" src="/img/user.png" />
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <h4 class="media-heading">Donec t ligula enim</h4>
+                                                            Donec sit amet  amet ligula enim . 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/.Row-->
+                <hr />
+                <div class="row" style="padding-bottom: 100px; `">
+                    <div class="col-md-6">
+                        <div id="comments-sec">
+                            <h4><strong>Compose Support Ticket </strong></h4>
+                            <hr />
+
+
+                            <div class="form-group  ">
+                                <label>Please Write a Subject Line</label>
+                                <input type="text" class="form-control" required="required" placeholder="Enter Subject Of Ticket" />
+                            </div>
+                            <div class="form-group ">
+                                <label>Please Enter Issue</label>
+                                <textarea class="form-control" rows="8"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success">Compose &amp; Send Ticket</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-back noti-box">
+                            <span class="icon-box bg-color-black">
+                                <i class="fa fa-bicycle"></i>
+                            </span>
+                            <div class="text-box">
+                                <p class="main-text">52 Important Issues to Fix </p>
+                                <p>Please fix these issues to work smooth</p>
+                                <p>Time Left: 30 mins</p>
+                                <hr />
+                                <p>
+                                    <span class=" color-bottom-txt"><i class="fa fa-edit"></i>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. 
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. 
+                               Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
+                             
+                                    </span>
+
+
+                                </p>
+                                <hr />
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. 
+                               Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/.ROW-->
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+<%= render :footer %>
+ 
+    <!-- /. FOOTER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="/js/bootstrap.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="/js/jquery.metisMenu.js"></script>
+       <!-- CUSTOM SCRIPTS -->
+    <script src="/js/custom.js"></script>
+</body>
+</html>
+
