@@ -2,6 +2,20 @@ require 'erubis'
 
 module BodyBuilder
   class Controller
+    attr_reader :request
+
+    def initialize(env)
+      @request ||= Rack::Request.new(env)
+    end
+
+    def params
+      request.params
+    end
+
+    def response
+      
+    end
+
     def render(views_action, options = {})
       template = File.read(File.join('app', 'views', controller_name, "#{views_action}.html.erb"))
       Erubis::Eruby.new(template).result(options)

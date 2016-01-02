@@ -8,8 +8,10 @@ require 'body_builder/context_helpers'
 module BodyBuilder
   class Application
     def call(env)
+      return [ 302, { 'Location' => '/admin/index' }] if env['PATH_INFO'] == '/'
+      return [ 500, {}, [] ] if env['PATH_INFO'] == 'favicon.ico'
       controller, action = get_controller_and_action(env)
-      response = controller.new.send(action)
+      response = controller.new(env).send(action)
       [ 200, { 'Content-Type' => 'text/html; charset=utf-8' }, [response] ]
     end
 
