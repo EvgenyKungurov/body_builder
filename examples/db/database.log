@@ -1,0 +1,30 @@
+D, [2016-01-07T20:51:51.452562 #29212] DEBUG -- :   [1m[36m (475.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+D, [2016-01-07T20:51:51.563746 #29212] DEBUG -- :   [1m[35m (71.2ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+D, [2016-01-07T22:27:03.766888 #3408] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (18.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-01-07T22:27:03.784293 #3408] DEBUG -- :   [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+D, [2016-01-07T22:27:23.126774 #3415] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-01-07T22:27:23.132793 #3415] DEBUG -- :   [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+D, [2016-01-07T23:35:17.859236 #4053] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-07T23:35:17.863378 #4053]  INFO -- : Migrating to CreateUser (201601072238)
+D, [2016-01-07T23:36:07.517860 #4065] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-07T23:36:07.522446 #4065]  INFO -- : Migrating to CreateUser (201601072238)
+D, [2016-01-07T23:37:45.916666 #4075] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-07T23:37:45.920803 #4075]  INFO -- : Migrating to CreateUsers (201601072238)
+D, [2016-01-07T23:38:25.326995 #4081] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-07T23:38:25.331108 #4081]  INFO -- : Migrating to CreateUsers (201601072238)
+D, [2016-01-07T23:38:49.815316 #4088] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-07T23:38:49.820194 #4088]  INFO -- : Migrating to CreateUsers (201601072238)
+D, [2016-01-07T23:43:07.422656 #4122] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-07T23:43:07.427411 #4122]  INFO -- : Migrating to CreateUsers (20160107234220)
+D, [2016-01-07T23:44:15.652293 #4132] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-07T23:44:15.656773 #4132]  INFO -- : Migrating to CreateUsers (20160107234220)
+D, [2016-01-08T00:23:05.442491 #5018] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-08T00:23:05.447287 #5018]  INFO -- : Migrating to CreateUsers (20160107234220)
+D, [2016-01-08T01:14:07.995017 #6003] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-08T01:14:07.999258 #6003]  INFO -- : Migrating to CreateUsers (20160107234220)
+D, [2016-01-08T01:14:45.761609 #6009] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-08T01:14:45.766235 #6009]  INFO -- : Migrating to CreateUsers (20160107234220)
+D, [2016-01-08T01:14:45.768532 #6009] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-08T01:14:46.260070 #6009] DEBUG -- :   [1m[36m (488.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "created_at" timestamp, "updated_at" timestamp) [0m
+D, [2016-01-08T01:14:46.316683 #6009] DEBUG -- :   [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160107234220"]]
+D, [2016-01-08T01:14:46.342238 #6009] DEBUG -- :   [1m[36m (25.1ms)[0m  [1mCOMMIT[0m

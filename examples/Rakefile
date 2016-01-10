@@ -1,0 +1,28 @@
+require 'active_record'
+require 'pg'
+require 'logger'
+require 'yaml'
+
+task :default => :migrate
+
+namespace :generate do
+  desc "migrations"
+  task :migration, [:name, :options] do |t, args|
+    time = Time.now.strftime "%Y%m%d%H%M%S"
+    File.open("db/migrate/#{time}_#{args[:name].downcase}.rb", 'w') do |file|
+      file.puts
+    end
+  end
+
+end
+
+desc "Run migrations"
+task :migrate => :connect_db do
+  ActiveRecord::Migrator.migrate('db/migrate')
+end
+
+desc "Connect to database"
+task :connect_db do
+  ActiveRecord::Base.establish_connection(YAML.load_file(File.join('db', 'database.yml')))
+  ActiveRecord::Base.logger = Logger.new(File.open('db/database.log', 'a'))
+end
