@@ -1,10 +1,16 @@
 require 'erubis'
+<<<<<<< HEAD
 require 'body_builder/action_notice'
 
 module BodyBuilder
   class Controller
     include BodyBuilder::ActionNotice
 
+=======
+
+module BodyBuilder
+  class Controller
+>>>>>>> 384f7320b0d5e76cb77f892ee5632e21e00535e0
     attr_reader :request
 
     def initialize(env)
@@ -16,11 +22,15 @@ module BodyBuilder
     end
 
     def response
+<<<<<<< HEAD
 
     end
 
     def redirect_to(action, args = nil)
       self.send(action)
+=======
+      
+>>>>>>> 384f7320b0d5e76cb77f892ee5632e21e00535e0
     end
 
     def render(views_action, options = {})

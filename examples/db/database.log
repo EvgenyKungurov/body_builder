@@ -28,3 +28,21 @@ D, [2016-01-08T01:14:45.768532 #6009] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
 D, [2016-01-08T01:14:46.260070 #6009] DEBUG -- :   [1m[36m (488.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "created_at" timestamp, "updated_at" timestamp) [0m
 D, [2016-01-08T01:14:46.316683 #6009] DEBUG -- :   [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160107234220"]]
 D, [2016-01-08T01:14:46.342238 #6009] DEBUG -- :   [1m[36m (25.1ms)[0m  [1mCOMMIT[0m
+D, [2016-01-11T21:39:09.133254 #4030] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (42.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-11T21:39:09.162296 #4030]  INFO -- : Migrating to Group (20160111213036)
+D, [2016-01-11T21:40:03.902071 #4037] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-11T21:40:03.909327 #4037]  INFO -- : Migrating to CreateGroups (20160111213036)
+D, [2016-01-11T21:40:03.912472 #4037] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-11T21:40:03.916382 #4037] DEBUG -- :   [1m[36m (1.5ms)[0m  [1mROLLBACK[0m
+D, [2016-01-11T21:45:07.863748 #4148] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-11T21:45:07.870177 #4148]  INFO -- : Migrating to CreateGroups (20160111213036)
+D, [2016-01-11T21:45:07.872129 #4148] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-11T21:45:08.295180 #4148] DEBUG -- :   [1m[36m (421.0ms)[0m  [1mCREATE TABLE "groups" ("id" serial primary key, "name" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+D, [2016-01-11T21:45:08.338773 #4148] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160111213036"]]
+D, [2016-01-11T21:45:08.356128 #4148] DEBUG -- :   [1m[36m (16.9ms)[0m  [1mCOMMIT[0m
+D, [2016-01-11T22:56:18.881331 #5202] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-11T22:56:18.888395 #5202]  INFO -- : Migrating to CreateServices (20160111224944)
+D, [2016-01-11T22:56:18.890764 #5202] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-11T22:56:19.001649 #5202] DEBUG -- :   [1m[36m (108.4ms)[0m  [1mCREATE TABLE "services" ("id" serial primary key, "name" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+D, [2016-01-11T22:56:19.011620 #5202] DEBUG -- :   [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160111224944"]]
+D, [2016-01-11T22:56:19.033365 #5202] DEBUG -- :   [1m[36m (21.3ms)[0m  [1mCOMMIT[0m

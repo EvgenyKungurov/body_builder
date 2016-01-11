@@ -2,6 +2,7 @@ require 'active_record'
 require 'pg'
 require 'logger'
 require 'yaml'
+require 'fileutils'
 
 task :default => :migrate
 
@@ -9,11 +10,11 @@ namespace :generate do
   desc "migrations"
   task :migration, [:name, :options] do |t, args|
     time = Time.now.strftime "%Y%m%d%H%M%S"
-    File.open("db/migrate/#{time}_#{args[:name].downcase}.rb", 'w') do |file|
-      file.puts
-    end
+    File.new("db/migrate/#{time}_create_#{args[:name].downcase}.rb", 'w')
+    File.new("app/controllers/#{args[:name].downcase}_controller.rb", 'w')
+    File.new("app/models/#{args[:name].gsub(/s$/, "")}.rb", 'w')
+    FileUtils.mkdir_p "app/views/#{args[:name].downcase}"
   end
-
 end
 
 desc "Run migrations"
