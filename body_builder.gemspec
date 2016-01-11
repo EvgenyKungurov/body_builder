@@ -32,8 +32,5 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'rack'
   spec.add_runtime_dependency 'erubis'
-<<<<<<< HEAD
   spec.add_runtime_dependency 'activerecord'
-=======
->>>>>>> 384f7320b0d5e76cb77f892ee5632e21e00535e0
 end

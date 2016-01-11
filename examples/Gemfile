@@ -1,8 +1,4 @@
 source 'https://rubygems.org'
 
-<<<<<<< HEAD
-gem 'body_builder', path: '../../body_builder'
+gem 'body_builder', path: '../../body_builder-master'
 gem 'pg'
-=======
-gem 'body_builder', path: '../../body_builder'
->>>>>>> 384f7320b0d5e76cb77f892ee5632e21e00535e0
