@@ -46,3 +46,17 @@ D, [2016-01-11T22:56:18.890764 #5202] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
 D, [2016-01-11T22:56:19.001649 #5202] DEBUG -- :   [1m[36m (108.4ms)[0m  [1mCREATE TABLE "services" ("id" serial primary key, "name" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
 D, [2016-01-11T22:56:19.011620 #5202] DEBUG -- :   [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160111224944"]]
 D, [2016-01-11T22:56:19.033365 #5202] DEBUG -- :   [1m[36m (21.3ms)[0m  [1mCOMMIT[0m
+D, [2016-01-12T16:10:40.396036 #20629] DEBUG -- :   [1m[36m (69.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+D, [2016-01-12T16:10:40.496105 #20629] DEBUG -- :   [1m[35m (97.0ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+D, [2016-01-12T16:10:40.498627 #20629] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-12T16:10:40.505900 #20629]  INFO -- : Migrating to CreateGroups (20160111213036)
+D, [2016-01-12T16:10:40.520339 #20629] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2016-01-12T16:10:40.616957 #20629] DEBUG -- :   [1m[36m (95.1ms)[0m  [1mCREATE TABLE "groups" ("id" serial primary key, "name" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+D, [2016-01-12T16:10:40.626425 #20629] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160111213036"]]
+D, [2016-01-12T16:10:40.638225 #20629] DEBUG -- :   [1m[36m (11.5ms)[0m  [1mCOMMIT[0m
+I, [2016-01-12T16:10:40.638335 #20629]  INFO -- : Migrating to CreateServices (20160111224944)
+D, [2016-01-12T16:10:40.640223 #20629] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-12T16:10:40.739905 #20629] DEBUG -- :   [1m[36m (99.0ms)[0m  [1mCREATE TABLE "services" ("id" serial primary key, "name" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+D, [2016-01-12T16:10:40.741782 #20629] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160111224944"]]
+D, [2016-01-12T16:10:40.748076 #20629] DEBUG -- :   [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+I, [2016-01-12T16:10:40.748176 #20629]  INFO -- : Migrating to CreateLogs (20160111225822)

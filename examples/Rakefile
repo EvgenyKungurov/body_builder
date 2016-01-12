@@ -10,9 +10,15 @@ namespace :generate do
   desc "migrations"
   task :migration, [:name, :options] do |t, args|
     time = Time.now.strftime "%Y%m%d%H%M%S"
-    File.new("db/migrate/#{time}_create_#{args[:name].downcase}.rb", 'w')
-    File.new("app/controllers/#{args[:name].downcase}_controller.rb", 'w')
-    File.new("app/models/#{args[:name].gsub(/s$/, "")}.rb", 'w')
+    migration = "db/migrate/#{time}_create_#{args[:name].downcase}.rb"
+    controller = "app/controllers/#{args[:name].downcase}_controller.rb"
+    model = "app/models/#{args[:name].gsub(/s$/, "")}.rb"
+
+    mvc = Array.new << migration << controller << model
+    mvc.each do |mvc|
+      puts "File already exist - #{mvc}" if File.exist? mvc
+      File.new(mvc, 'w') unless File.exist? mvc
+    end
     FileUtils.mkdir_p "app/views/#{args[:name].downcase}"
   end
 end
