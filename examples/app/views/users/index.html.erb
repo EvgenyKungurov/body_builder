@@ -1,4 +1,6 @@
+<%= notice %>
 Пользователи:
 <% users.each do |user| %>
-<p> <%= user.name %> </p>
+<p> <%= user.name %> <%= "<a href=/users/edit?id=#{user.id}>" %>Редактировать</a> <%= "<a href=/users/destroy?id=#{user.id}>" %>Удалить</a></p>
 <% end %>
+<a href="new">Добавить нового пользователя</a>

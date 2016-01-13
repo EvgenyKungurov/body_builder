@@ -16,8 +16,11 @@ module BodyBuilder
       return [ 302, { 'Location' => '/admin/index' }] if env['PATH_INFO'] == '/'
       return [ 500, {}, [] ] if env['PATH_INFO'] == 'favicon.ico'
       controller, action = get_controller_and_action(env)
-      response = controller.new(env).send(action)
-      [ 200, { 'Content-Type' => 'text/html; charset=utf-8' }, [response] ]
+      controller = controller.new(env)
+      controller.send(action)
+      result = controller.render(action)
+      controller.response(result, 200, headers = {'Content-Type' => 'text/html; charset=utf-8'})
+      #[ 200, { 'Content-Type' => 'text/html; charset=utf-8' }, [response] ]
     end
 
     private

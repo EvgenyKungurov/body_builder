@@ -60,3 +60,12 @@ D, [2016-01-12T16:10:40.739905 #20629] DEBUG -- :   [1m[36m (99.0ms)[0m  [1m
 D, [2016-01-12T16:10:40.741782 #20629] DEBUG -- :   [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160111224944"]]
 D, [2016-01-12T16:10:40.748076 #20629] DEBUG -- :   [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
 I, [2016-01-12T16:10:40.748176 #20629]  INFO -- : Migrating to CreateLogs (20160111225822)
+D, [2016-01-13T09:21:20.621006 #8200] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (39.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-13T09:21:20.722673 #8200]  INFO -- : Migrating to CreateQueue (20160112164824)
+D, [2016-01-13T09:22:05.501391 #8214] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-13T09:22:05.507852 #8214]  INFO -- : Migrating to CreateUsers (20160113091454)
+D, [2016-01-13T09:22:05.509142 #8214] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2016-01-13T09:22:05.887914 #8214] DEBUG -- :   [1m[36m (377.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+D, [2016-01-13T09:22:05.898686 #8214] DEBUG -- :   [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160113091454"]]
+D, [2016-01-13T09:22:05.909538 #8214] DEBUG -- :   [1m[36m (10.4ms)[0m  [1mCOMMIT[0m
+D, [2016-01-13T09:22:12.496415 #8219] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
