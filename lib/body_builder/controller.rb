@@ -1,3 +1,4 @@
+#Dir['../../models/*.rb'].each { |file| puts file }
 require 'erubis'
 require 'body_builder/action_notice'
 
@@ -19,9 +20,26 @@ module BodyBuilder
       @response ||= Rack::Response.new(body, status, headers)
     end
 
-    def redirect_to(action, args = nil)
-      self.send(action)
-      render(:index)
+    def redirection?
+      @redirect != nil
+    end
+
+    def redirect_path
+      @redirect
+    end
+
+    def redirect_params
+      @params
+    end
+
+    def redirect_to(arg)
+      case arg
+      when Symbol
+        @redirect = arg.to_s
+      else
+        @params = "?id=#{arg.id}"
+        @redirect = "show".to_s
+      end
     end
 
     def render(views_action)

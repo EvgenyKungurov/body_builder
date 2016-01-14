@@ -1,5 +1,3 @@
-require File.expand_path('../../models/user', __FILE__)
-
 class UsersController < BodyBuilder::Controller
 
   def index
@@ -26,7 +24,7 @@ class UsersController < BodyBuilder::Controller
     @user = User.find(params[:id])
     if @user.update_attributes(strong_params)
       self.notice = "Данные пользователя обновлены"
-      redirect_to :show
+      redirect_to @user
     else
       render :edit
     end

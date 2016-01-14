@@ -13,17 +13,29 @@ module BodyBuilder
   class Application
     def call(env)
       BodyBuilder::DB.db_connect
-      return [ 302, { 'Location' => '/admin/index' }] if env['PATH_INFO'] == '/'
+      return [ 302, { 'Location' => '/admin/index' } ] if env['PATH_INFO'] == '/'
       return [ 500, {}, [] ] if env['PATH_INFO'] == 'favicon.ico'
-      controller, action = get_controller_and_action(env)
-      controller = controller.new(env)
-      controller.send(action)
-      result = controller.render(action)
-      controller.response(result, 200, headers = {'Content-Type' => 'text/html; charset=utf-8'})
-      #[ 200, { 'Content-Type' => 'text/html; charset=utf-8' }, [response] ]
+      controller, @action = get_controller_and_action(env)
+      @controller = controller.new(env)
+      @controller.send(@action)
+      send_route
     end
 
     private
+
+    def send_route
+      if @controller.redirection?
+        @controller.send(@controller.redirect_path)
+        [
+          302,
+          { 'Location' => "#{@controller.redirect_path}#{@controller.redirect_params}" },
+          [@controller.render(@controller.redirect_path)]
+        ]
+      else
+        result = @controller.render(@action)
+        @controller.response(result, 200, headers = {'Content-Type' => 'text/html; charset=utf-8'})
+      end
+    end
 
     def get_controller_and_action(env)
       _,controller, action = env["PATH_INFO"].split('/')

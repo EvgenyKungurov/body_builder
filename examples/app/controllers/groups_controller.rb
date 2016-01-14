@@ -1,13 +1,37 @@
-require File.expand_path('../../models/group', __FILE__)
-
 class GroupsController < BodyBuilder::Controller
 
   def index
-    render :index, groups: Group.all
+    @groups = Group.all
   end
 
   def new
-    render :new, notice: notice
+    @notice = notice
+  end
+
+  def show
+    @notice = notice
+    @group = Group.find(params[:id])
+  end
+
+  def edit
+     @notice = notice
+     @group = Group.find(params[:id])
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    if @group.update_attributes(strong_params)
+      self.notice = "Данные пользователя обновлены"
+      redirect_to @group
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @group = Group.find(params[:id])
+    self.notice = "Пользователь #{@group.name} удален"
+    redirect_to :index if @group.destroy
   end
 
   def create
@@ -23,6 +47,6 @@ class GroupsController < BodyBuilder::Controller
   private
 
   def strong_params
-    params["group"].permit(:name)
+    params[:group].permit(:name)
   end
 end

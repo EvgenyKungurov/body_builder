@@ -1,3 +1,4 @@
 Группы <% groups.each do |group| %>
-<p> <%= group.name %> </p>
+<p>  <%= group.name %> <%= "<a href=/groups/edit?id=#{group.id}>" %>Редактировать</a> <%= "<a href=/groups/destroy?id=#{group.id}>" %>Удалить</a></p>
 <% end %>
+<a href="new">Добавить новую группу</a>

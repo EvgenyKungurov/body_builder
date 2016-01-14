@@ -1,6 +1,6 @@
 class QueueController < BodyBuilder::Controller
   def index
-    render :index, count: Users.all
+    @count: Queue.all
     #File.read('/home/evgeny/ruby/body_builder-master/examples/public/count.txt')
   end
 
