@@ -1,0 +1,6 @@
+<p><%= notice %></p>
+<form action="update" method="get">
+  Имя: <input type="text" name="log[name]" value= '<%= log.name %>'> <br>
+  <input type="hidden" name="id" value=<%= log.id %>> <br>
+  <input type="submit" value="Submit">
+</form>

@@ -1,0 +1,4 @@
+Группы <% logs.each do |log| %>
+<p>  <%= log.name %> <%= "<a href=/logs/edit?id=#{log.id}>" %>Редактировать</a> <%= "<a href=/logs/destroy?id=#{log.id}>" %>Удалить</a></p>
+<% end %>
+<a href="new">Добавить новую группу</a>

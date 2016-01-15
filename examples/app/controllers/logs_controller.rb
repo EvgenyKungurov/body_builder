@@ -1,5 +1,4 @@
 class LogsController < BodyBuilder::Controller
-
   def index
     @logs = Log.all
   end
