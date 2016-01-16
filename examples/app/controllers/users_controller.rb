@@ -1,33 +1,11 @@
 class UsersController < BodyBuilder::Controller
 
   def index
-    self.notice = "Проверка"
-    @notice = notice
-    @users  = User.all
+    render :index, users: User.all
   end
 
   def new
-    @notice = notice
-  end
-
-  def show
-    @notice = notice
-    @user = User.find(params[:id])
-  end
-
-  def edit
-     @notice = notice
-     @user = User.find(params[:id])
-  end
-
-  def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(strong_params)
-      self.notice = "Данные пользователя обновлены"
-      redirect_to @user
-    else
-      render :edit
-    end
+    render :new, notice: notice
   end
 
   def create
@@ -40,15 +18,9 @@ class UsersController < BodyBuilder::Controller
     end
   end
 
-  def destroy
-  	@user = User.find(params[:id])
-    self.notice = "Пользователь #{@user.name} удален"
- 		redirect_to :index if @user.destroy
-  end
-
   private
 
   def strong_params
-    params[:user].permit(:name)
+    params["user"].permit(:name)
   end
 end
