@@ -1,5 +1,4 @@
-Группы <% services.each do |service| %>
+Сервисы <% services.each do |service| %>
 <p>  <%= service.name %> <%= "<a href=/services/edit?id=#{service.id}>" %>Редактировать</a> <%= "<a href=/services/destroy?id=#{service.id}>" %>Удалить</a></p>
-<%= service.created_at.strftime '%d-%m-%Y' %>
 <% end %>
-<a href="new">Добавить новую группу</a>
+<a href="new">Добавить новый сервис</a>

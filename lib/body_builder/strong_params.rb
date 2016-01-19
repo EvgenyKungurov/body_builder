@@ -1,5 +1,7 @@
 class Hash
   def permit(*args)
-    self.reject { |k, v| args.any? { |v| v.to_s != k } }
+    result = {}
+    args.each { |k| result[k] = self.fetch(k.to_s) if self.key? k.to_s }
+    result
   end
 end

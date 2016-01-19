@@ -1,0 +1,18 @@
+<body style="background-image: url(/img/bg.jpg)">
+<%= render :head %>
+
+<h4><button class="btn btn-warning">Время: <%= Time.now.strftime "%H:%M  %d-%m-%Y" %></button><h4>
+<p class="text-center">Выберите необходимый раздел</p>
+<p class="text-center">Возьмите талон с вашим номером в очереди</p></br>
+
+  <div class="services_block">
+    <form action="add_to_turn" method="get">
+      <% services.each do |service| %>
+        <p><%= "<button type='submit' value= #{service.world_of_alphabet} class='btn btn-success btn-lg btn-block'>" %><%= service.name %></button></p></br>
+      <% end %>
+    </form>
+    </br></br>
+    <p><button type="button" class="btn btn-info btn-lg btn-block">Оценить качество предоставленной услуги</button></p></br>
+  </div>
+
+</body>

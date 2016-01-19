@@ -2,7 +2,7 @@ class CreateLogs < ActiveRecord::Migration
   def self.up
     create_table :logs do |t|
       t.integer :count
-      t.
+      t.string :type
 
       t.timestamps null: false
     end

@@ -18,6 +18,8 @@ module BodyBuilder
       controller, @action = get_controller_and_action(env)
       @controller = controller.new(env)
       @controller.send(@action)
+      @action = @controller.current_action if @controller.current_action
+      puts @action
       send_route
     end
 
@@ -29,7 +31,7 @@ module BodyBuilder
         [
           302,
           { 'Location' => "#{@controller.redirect_path}#{@controller.redirect_params}" },
-          [@controller.render(@controller.redirect_path)]
+          [@controller.render(@action)]
         ]
       else
         result = @controller.render(@action)

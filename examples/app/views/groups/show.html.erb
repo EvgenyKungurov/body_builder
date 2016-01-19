@@ -1,3 +1,6 @@
 <p><%= notice %></p>
 <%= group.name %><br>
+<% group.users.each do |user| %>
+  <%= user.name %></br>
+<% end %>
 <a href="index">На главную<a/>

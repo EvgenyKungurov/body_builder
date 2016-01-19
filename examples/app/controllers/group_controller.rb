@@ -1,0 +1,1 @@
+/home/evgeny/ruby/body_builder/examples/app/controllers/groups_controller.rb

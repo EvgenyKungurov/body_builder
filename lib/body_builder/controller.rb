@@ -1,11 +1,10 @@
-#Dir['../../models/*.rb'].each { |file| puts file }
 require 'erubis'
 require 'body_builder/action_notice'
 
 module BodyBuilder
   class Controller
     include BodyBuilder::ActionNotice
-
+    attr_accessor :current_action
     attr_reader :request
 
     def initialize(env)
@@ -36,13 +35,16 @@ module BodyBuilder
       case arg
       when Symbol
         @redirect = arg.to_s
+        self.current_action = @redirect
       else
         @params = "?id=#{arg.id}"
-        @redirect = "show".to_s
+        @redirect = "show"
+        self.current_action = @redirect
       end
     end
 
     def render(views_action)
+      self.current_action = views_action
       template = File.read(File.join('app', 'views', controller_name, "#{views_action}.html.erb"))
       Erubis::Eruby.new(template).result(instance_variables_hash)
     end

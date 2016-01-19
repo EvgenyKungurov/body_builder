@@ -1,6 +1,9 @@
 <p><%= notice %></p>
+
 <form action="update" method="get">
   Имя: <input type="text" name="user[name]" value= '<%= user.name %>'> <br>
+<input type="text" name="user[group_id]" value= '<%= user.group_id %>'> <br>
+  Группа:
   <input type="hidden" name="id" value=<%= user.id %>> <br>
   <input type="submit" value="Submit">
 </form>

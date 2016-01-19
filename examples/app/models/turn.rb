@@ -1,4 +1,3 @@
-class Group < ActiveRecord::Base
+class Turn < ActiveRecord::Base
 	validates :name, presence: true, uniqueness: true
-	has_many :users
 end

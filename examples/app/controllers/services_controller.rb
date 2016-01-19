@@ -1,7 +1,7 @@
 class ServicesController < BodyBuilder::Controller
 
   def index
-    @services = Service.all
+    @services = Service.all.sort_by(&:name)
   end
 
   def new
@@ -24,6 +24,7 @@ class ServicesController < BodyBuilder::Controller
       self.notice = "Данные пользователя обновлены"
       redirect_to @service
     else
+      self.notice = "Были найдены ошибки: #{@service.errors.messages}"
       render :edit
     end
   end
@@ -40,13 +41,13 @@ class ServicesController < BodyBuilder::Controller
       redirect_to :index
     else
       self.notice = "Что то пошло не так - #{@service.errors.messages}"
-      redirect_to :new
+      render :new
     end
   end
 
   private
 
   def strong_params
-    params[:service].permit(:name)
+    params[:service].permit(:name, :world_of_alphabet)
   end
 end

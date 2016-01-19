@@ -1,7 +1,7 @@
 class GroupsController < BodyBuilder::Controller
 
   def index
-    @groups = Group.all
+    @groups = Group.all.sort_by(&:name)
   end
 
   def new
@@ -40,7 +40,7 @@ class GroupsController < BodyBuilder::Controller
       redirect_to :index
     else
       self.notice = "Что то пошло не так - #{@group.errors.messages}"
-      redirect_to :new
+      render :new
     end
   end
 
