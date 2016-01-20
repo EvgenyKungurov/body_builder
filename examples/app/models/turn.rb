@@ -1,3 +1,4 @@
 class Turn < ActiveRecord::Base
-	validates :name, presence: true, uniqueness: true
+	validates :day, presence: true
+	has_many :clients
 end

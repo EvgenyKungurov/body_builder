@@ -1,5 +1,4 @@
 <%= render :head %>
 <button class="btn btn-warning">Время: <%= Time.now.strftime "%H:%M %d-%m-%Y" %></button>
-Количество в очереди <%= queue.count %>
-123
+Количество в очереди <%= queue.each { |queue| queue.inspect } %>
 <span class="label label-success">Success</span>

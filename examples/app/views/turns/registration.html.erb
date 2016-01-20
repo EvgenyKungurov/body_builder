@@ -1,14 +1,16 @@
-<body style="background-image: url(/img/bg.jpg)">
+<body onload="clock()"; style="background-image: url(/img/bg.jpg)">
 <%= render :head %>
 
-<h4><button class="btn btn-warning">Время: <%= Time.now.strftime "%H:%M  %d-%m-%Y" %></button><h4>
+<h4><button class="btn btn-warning">Время и дата: <span id="time"></span> <span id="data"></span></button><h4>
 <p class="text-center">Выберите необходимый раздел</p>
 <p class="text-center">Возьмите талон с вашим номером в очереди</p></br>
 
   <div class="services_block">
     <form action="add_to_turn" method="get">
       <% services.each do |service| %>
-        <p><%= "<button type='submit' value= #{service.world_of_alphabet} class='btn btn-success btn-lg btn-block'>" %><%= service.name %></button></p></br>
+        <p><%= "<button type='submit' name='turn[service_id]' value='#{service.id}' class='btn btn-success btn-lg btn-block'>" %>
+          <%= service.name %></button>
+        </p></br>
       <% end %>
     </form>
     </br></br>

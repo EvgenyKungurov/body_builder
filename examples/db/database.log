@@ -174,3 +174,52 @@ D, [2016-01-18T15:32:29.685714 #4744] DEBUG -- :   [1m[35m (0.4ms)[0m  ALTER 
 D, [2016-01-18T15:32:29.686293 #4744] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mALTER INDEX "queues_pkey" RENAME TO "turns_pkey"[0m
 D, [2016-01-18T15:32:29.698805 #4744] DEBUG -- :   [1m[35mSQL (1.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "201601181531028"]]
 D, [2016-01-18T15:32:29.711030 #4744] DEBUG -- :   [1m[36m (11.8ms)[0m  [1mCOMMIT[0m
+D, [2016-01-19T15:37:53.871692 #3974] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (40.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-19T15:37:53.878441 #3974]  INFO -- : Migrating to ServiceIdToSTurns (20160119153522)
+D, [2016-01-19T15:37:53.880268 #3974] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-19T15:37:54.341964 #3974] DEBUG -- :   [1m[36m (461.2ms)[0m  [1mALTER TABLE "turns" ALTER COLUMN "service_id" TYPE character varying[0m
+D, [2016-01-19T15:37:54.351659 #3974] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160119153522"]]
+D, [2016-01-19T15:37:54.395973 #3974] DEBUG -- :   [1m[36m (43.9ms)[0m  [1mCOMMIT[0m
+D, [2016-01-19T16:07:55.312496 #4502] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-19T16:07:55.320030 #4502]  INFO -- : Migrating to DeleteColumnCountTurns (20160119160550)
+D, [2016-01-19T16:07:55.322563 #4502] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-19T16:07:55.324665 #4502] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mALTER TABLE "turns" DROP "count"[0m
+D, [2016-01-19T16:07:55.325675 #4502] DEBUG -- :   [1m[35m (0.3ms)[0m  ROLLBACK
+D, [2016-01-19T16:08:21.271051 #4507] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-19T16:08:21.277689 #4507]  INFO -- : Migrating to DeleteColumnCountTurns (20160119160550)
+D, [2016-01-19T16:08:21.279477 #4507] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2016-01-19T16:08:21.280979 #4507] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mALTER TABLE "turns" DROP "count"[0m
+D, [2016-01-19T16:08:21.281769 #4507] DEBUG -- :   [1m[35m (0.4ms)[0m  ALTER TABLE "turns" RENAME COLUMN "count_day" TO "clients"
+D, [2016-01-19T16:08:21.294279 #4507] DEBUG -- :   [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160119160550"]]
+D, [2016-01-19T16:08:21.312336 #4507] DEBUG -- :   [1m[35m (17.6ms)[0m  COMMIT
+D, [2016-01-19T17:08:46.292492 #5202] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (2.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-19T17:08:46.299917 #5202]  INFO -- : Migrating to ChangeClientsToTextTurns (20160119170618)
+D, [2016-01-19T17:08:46.301952 #5202] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2016-01-19T17:08:46.303188 #5202] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mALTER TABLE "turns" ALTER COLUMN "clients" TYPE text[0m
+D, [2016-01-19T17:08:46.313226 #5202] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160119170618"]]
+D, [2016-01-19T17:08:46.333173 #5202] DEBUG -- :   [1m[36m (19.4ms)[0m  [1mCOMMIT[0m
+D, [2016-01-19T20:03:51.268498 #6263] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (2.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-01-19T21:36:54.406800 #7097] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-19T21:36:54.415087 #7097]  INFO -- : Migrating to CreateClients (20160119213557)
+D, [2016-01-19T21:36:54.417174 #7097] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-19T21:36:54.574765 #7097] DEBUG -- :   [1m[36m (155.7ms)[0m  [1mCREATE TABLE "clients" ("id" serial primary key, "status" character varying, "user_id" character varying, "recorded_on" character varying, "symbol_name" character varying, "turn_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+D, [2016-01-19T21:36:54.584447 #7097] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160119213557"]]
+D, [2016-01-19T21:36:54.606151 #7097] DEBUG -- :   [1m[36m (21.3ms)[0m  [1mCOMMIT[0m
+D, [2016-01-19T21:52:52.780544 #7248] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-19T21:52:52.788065 #7248]  INFO -- : Migrating to ChangeSymbolNameClients (20160119215157)
+D, [2016-01-19T21:52:52.790450 #7248] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-19T21:52:52.793101 #7248] DEBUG -- :   [1m[36m (0.8ms)[0m  [1mALTER TABLE "clients" RENAME COLUMN "symbol_name" TO "symbol_name_turn"[0m
+D, [2016-01-19T21:52:52.807460 #7248] DEBUG -- :   [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160119215157"]]
+D, [2016-01-19T21:52:52.820499 #7248] DEBUG -- :   [1m[36m (12.6ms)[0m  [1mCOMMIT[0m
+D, [2016-01-19T21:54:36.622451 #7259] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-19T21:54:36.629928 #7259]  INFO -- : Migrating to RemoveClientsFromTurn (20160119215257)
+D, [2016-01-19T21:54:36.631816 #7259] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-19T21:54:36.633409 #7259] DEBUG -- :   [1m[36m (1.1ms)[0m  [1mALTER TABLE "turns" DROP "clients"[0m
+D, [2016-01-19T21:54:36.642823 #7259] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160119215257"]]
+D, [2016-01-19T21:54:36.655319 #7259] DEBUG -- :   [1m[36m (12.1ms)[0m  [1mCOMMIT[0m
+D, [2016-01-19T22:41:13.419526 #7819] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-19T22:41:13.426568 #7819]  INFO -- : Migrating to AddDateToTurns (20160119223939)
+D, [2016-01-19T22:41:13.428587 #7819] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2016-01-19T22:41:13.431215 #7819] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mALTER TABLE "turns" ADD "day" character varying[0m
+D, [2016-01-19T22:41:13.441101 #7819] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160119223939"]]
+D, [2016-01-19T22:41:13.455270 #7819] DEBUG -- :   [1m[36m (13.7ms)[0m  [1mCOMMIT[0m
