@@ -1,0 +1,111 @@
+<body onload="clock()"; style="background-image: url(/img/bg.jpg)">
+<%= render :head %>
+
+<h4><button class="btn btn-warning">Время и дата: <span id="time"></span> <span id="data"></span></button><h4>
+<p class="text-center">Выберите направление, дату и время приема</p>
+<p class="text-center">Информируем, что очередь чередуется через неколько человек(например вы записаны на 11:00, вас вызовут спустя 2-3 человека)</p></br>
+
+  <div class="services_block">
+    <form action="add_to_turn" method="get" onsubmit="return checkForm(this)">
+      <select name="turn[service_id]" class='form-control' id='service_id'>"
+        <option value=''></option>
+        <% services.each do |service| %>
+          <%= "<option value='#{service.id}'>#{service.name}</option> " %>
+        <% end %>
+      </select><p id='err_service_id' class='error'></p><br><br>
+
+      <table>
+        <tr>
+          <td width="100px" class="text-center">Дата</td>
+          <td width="100px" class="text-center">Час</td>
+          <td width="100px" class="text-center">Минуты</td>
+        </tr>
+        <tr>
+          <td width="100px"><select name="turn[day]" class="form-control" id="day">
+                <option value=""></option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+              </select><p id='err_day' class='error'>
+            </td>
+            <td width="100px"><select name="turn[hour]" class="form-control" id="hour">
+                  <option value=""></option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                </select><p id='err_hour' class='error'>
+              </td>
+              <td width="100px"><select name="turn[minute]" class="form-control" id="minute">
+                    <option value=""></option>
+                    <option value="00">00</option>
+                    <option value="05">05</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                    <option value="30">30</option>
+                    <option value="35">35</option>
+                    <option value="40">40</option>
+                    <option value="45">45</option>
+                    <option value="50">50</option>
+                    <option value="55">55</option>
+                  </select><p id='err_minute' class='error'>
+              </td>
+            </tr>
+          </table><br>
+      <input type="hidden" name="turn[internet_entry]">
+      <input type="submit" value="Записаться" class="btn btn-success">
+    </form>
+    <%= notice %>
+  </div>
+
+</body>
+
+<script type="text/javascript">
+function checkForm(form){
+ if (document.getElementById('service_id').value=="") {
+   document.getElementById('err_service_id').innerHTML='Не выбран сервис';
+   return false;
+ };
+ if (document.getElementById('day').value=="") {
+   document.getElementById('err_day').innerHTML='Не указана дата';
+   return false;
+ };
+ if (document.getElementById('hour').value=="") {
+   document.getElementById('err_hour').innerHTML='Не указано время';
+   return false;
+  };
+ if (document.getElementById('minute').value=="") {
+   document.getElementById('err_minute').innerHTML='Не указаны минуты';
+   return false;
+ };
+ return true;
+};
+</script>

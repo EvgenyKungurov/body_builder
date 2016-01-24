@@ -223,3 +223,22 @@ D, [2016-01-19T22:41:13.428587 #7819] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
 D, [2016-01-19T22:41:13.431215 #7819] DEBUG -- :   [1m[36m (1.0ms)[0m  [1mALTER TABLE "turns" ADD "day" character varying[0m
 D, [2016-01-19T22:41:13.441101 #7819] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160119223939"]]
 D, [2016-01-19T22:41:13.455270 #7819] DEBUG -- :   [1m[36m (13.7ms)[0m  [1mCOMMIT[0m
+D, [2016-01-21T13:07:08.176155 #6079] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (50.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-21T13:07:08.182868 #6079]  INFO -- : Migrating to AddDayHourMinutesToClients (20160121130434)
+D, [2016-01-21T13:07:08.184677 #6079] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-21T13:07:08.185494 #6079] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+D, [2016-01-21T13:07:49.442348 #6088] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-21T13:07:49.450133 #6088]  INFO -- : Migrating to AddDayHourMinutesToClients (20160121130434)
+D, [2016-01-21T13:07:49.452344 #6088] DEBUG -- :   [1m[35m (0.2ms)[0m  BEGIN
+D, [2016-01-21T13:07:49.556638 #6088] DEBUG -- :   [1m[36m (103.7ms)[0m  [1mALTER TABLE "clients" RENAME COLUMN "recorded_on" TO "day"[0m
+D, [2016-01-21T13:07:49.622021 #6088] DEBUG -- :   [1m[35m (62.0ms)[0m  ALTER TABLE "clients" ADD "hour" character varying
+D, [2016-01-21T13:07:49.622926 #6088] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mALTER TABLE "clients" ADD "minute" character varying[0m
+D, [2016-01-21T13:07:49.677637 #6088] DEBUG -- :   [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160121130434"]]
+D, [2016-01-21T13:07:49.697493 #6088] DEBUG -- :   [1m[36m (19.4ms)[0m  [1mCOMMIT[0m
+D, [2016-01-21T13:21:21.393792 #6187] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2016-01-23T22:01:59.362684 #10851] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-23T22:01:59.369497 #10851]  INFO -- : Migrating to ChangeCountSettings (20160123220015)
+D, [2016-01-23T22:01:59.371291 #10851] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-23T22:01:59.923364 #10851] DEBUG -- :   [1m[36m (551.6ms)[0m  [1mALTER TABLE "settings" ALTER COLUMN "count" TYPE character varying[0m
+D, [2016-01-23T22:01:59.933978 #10851] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160123220015"]]
+D, [2016-01-23T22:01:59.967439 #10851] DEBUG -- :   [1m[36m (33.0ms)[0m  [1mCOMMIT[0m
