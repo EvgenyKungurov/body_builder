@@ -1,0 +1,7 @@
+<p><%= notice %></p>
+
+<form action="update" method="get">
+  Количество: <input type="text" name="client_restriction[count]" value= '<%= restriction.count %>'> <br>
+  <input type="hidden" name="id" value=<%= restriction.id %>> <br>
+  <input type="submit" value="Submit">
+</form>

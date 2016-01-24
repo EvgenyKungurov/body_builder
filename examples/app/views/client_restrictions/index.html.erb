@@ -1,0 +1,4 @@
+<% restrictions.each do |restriction| %>
+  <%= restriction.name %>:
+  <%= restriction.count %>  <%= "<a href=/client_restrictions/edit?id=#{restriction.id}>" %>Редактировать</a><br>
+<% end %>

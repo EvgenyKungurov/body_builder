@@ -242,3 +242,21 @@ D, [2016-01-23T22:01:59.371291 #10851] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
 D, [2016-01-23T22:01:59.923364 #10851] DEBUG -- :   [1m[36m (551.6ms)[0m  [1mALTER TABLE "settings" ALTER COLUMN "count" TYPE character varying[0m
 D, [2016-01-23T22:01:59.933978 #10851] DEBUG -- :   [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160123220015"]]
 D, [2016-01-23T22:01:59.967439 #10851] DEBUG -- :   [1m[36m (33.0ms)[0m  [1mCOMMIT[0m
+D, [2016-01-24T11:59:55.903140 #5852] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (50.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-24T11:59:55.910350 #5852]  INFO -- : Migrating to CreateRestrictions (20160124115834)
+D, [2016-01-24T12:00:18.218997 #5857] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-24T12:00:18.225904 #5857]  INFO -- : Migrating to CreateRestrictions (20160124115834)
+D, [2016-01-24T12:00:18.228200 #5857] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-24T12:00:18.256222 #5857] DEBUG -- :   [1m[36m (27.4ms)[0m  [1mALTER TABLE "settings" RENAME TO "restrictions"[0m
+D, [2016-01-24T12:00:18.304151 #5857] DEBUG -- :   [1m[35m (0.4ms)[0m  ALTER TABLE "public"."settings_id_seq" RENAME TO "restrictions_id_seq"
+D, [2016-01-24T12:00:18.304745 #5857] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mALTER INDEX "settings_pkey" RENAME TO "restrictions_pkey"[0m
+D, [2016-01-24T12:00:18.317474 #5857] DEBUG -- :   [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160124115834"]]
+D, [2016-01-24T12:00:18.337705 #5857] DEBUG -- :   [1m[36m (17.1ms)[0m  [1mCOMMIT[0m
+D, [2016-01-24T12:13:53.411078 #6175] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2016-01-24T12:13:53.418174 #6175]  INFO -- : Migrating to CreateClientRestrictions (20160124121257)
+D, [2016-01-24T12:13:53.420035 #6175] DEBUG -- :   [1m[35m (0.3ms)[0m  BEGIN
+D, [2016-01-24T12:13:53.421345 #6175] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mALTER TABLE "restrictions" RENAME TO "client_restrictions"[0m
+D, [2016-01-24T12:13:53.426485 #6175] DEBUG -- :   [1m[35m (2.1ms)[0m  ALTER TABLE "public"."restrictions_id_seq" RENAME TO "client_restrictions_id_seq"
+D, [2016-01-24T12:13:53.427412 #6175] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mALTER INDEX "restrictions_pkey" RENAME TO "client_restrictions_pkey"[0m
+D, [2016-01-24T12:13:53.440327 #6175] DEBUG -- :   [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160124121257"]]
+D, [2016-01-24T12:13:53.457617 #6175] DEBUG -- :   [1m[36m (16.9ms)[0m  [1mCOMMIT[0m

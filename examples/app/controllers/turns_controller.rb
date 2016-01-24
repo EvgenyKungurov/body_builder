@@ -1,3 +1,4 @@
+require "byebug"
 class TurnsController < BodyBuilder::Controller
   attr_accessor :current_day
   attr_accessor :internet_day
@@ -17,8 +18,9 @@ class TurnsController < BodyBuilder::Controller
 
   def add_to_turn
     @turn = Turn.find_or_initialize_by(strong_params.merge(current_day))
-    @turn = Turn.find_or_initialize_by(strong_params.merge(internet_day)) if internet_entry?
-    puts internet_entry?
+    if internet_entry?
+      @turn = Turn.find_or_initialize_by(strong_params.merge(internet_day))
+    end
     if @turn.save
       add_client(@turn)
       @services = registration
@@ -36,13 +38,13 @@ class TurnsController < BodyBuilder::Controller
   def add_client(turn)
     @client = Client.new
     @client.turn_id = @turn.id
-    client = Client.all.select { |client| client.turn_id == @turn.id.to_s }.last
+    clients = Client.all.select { |client| client.turn_id == @turn.id.to_s }.last
     if internet_entry?
-      @client.day = internet_day.values.last
+      @client.day = internet_day[:day]
       @client.hour = params[:turn]['hour']
       @client.minute = params[:turn]['minute']
     end
-    @client.symbol_name_turn = increment_number_turn(client)
+    @client.symbol_name_turn = increment_number_turn(clients)
     @client.save
   end
 
@@ -57,21 +59,16 @@ class TurnsController < BodyBuilder::Controller
     { day: time }
   end
 
-  def increment_number_turn(client)
+  def increment_number_turn(clients)
     service = Service.find(params[:turn]['service_id'])
     symbol_name = service.world_of_alphabet
-    if client
-      if internet_entry?
-        "И#{symbol_name}-#{client.symbol_name_turn.split('-').last.to_i + 1 }".to_sym
-      else
-        "#{symbol_name}-#{client.symbol_name_turn.split('-').last.to_i + 1 }".to_sym
-      end
+    if clients
+      increment_number = clients.symbol_name_turn.split('-').last.to_i + 1
+      return "#{symbol_name}И-#{increment_number}" if internet_entry?
+      "#{symbol_name}-#{increment_number}" unless internet_entry?
     else
-      if internet_entry?
-        "И#{symbol_name}-1".to_sym
-      else
-        "#{symbol_name}-1".to_sym
-      end
+      return "#{symbol_name}И-1" if internet_entry?
+      "#{symbol_name}-1" unless internet_entry?
     end
   end
 
