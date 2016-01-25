@@ -19,7 +19,6 @@ module BodyBuilder
       @controller = controller.new(env)
       @controller.send(@action)
       @action = @controller.current_action if @controller.current_action
-      puts @action
       send_route
     end
 

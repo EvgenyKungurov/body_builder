@@ -4,6 +4,6 @@ class String
   end
 
   def to_snake_case
-    self.split(/Controller$/).join.downcase + '_controller'
+    self.split(/Controller$/).join.split(/(?=[A-Z])/).map(&:downcase).join('_') + '_controller'
   end
 end

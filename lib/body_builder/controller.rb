@@ -71,7 +71,8 @@ module BodyBuilder
     end
 
     def controller_name
-      self.class.to_s.gsub(/Controller$/, "").downcase
+      self.class.to_s.gsub(/Controller$/, "")
+        .split(/(?=[A-Z])/).map(&:downcase).join('_')
     end
   end
 end

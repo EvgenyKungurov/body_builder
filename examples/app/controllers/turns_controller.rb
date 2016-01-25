@@ -1,4 +1,3 @@
-require "byebug"
 class TurnsController < BodyBuilder::Controller
   attr_accessor :current_day
   attr_accessor :internet_day
@@ -17,14 +16,14 @@ class TurnsController < BodyBuilder::Controller
   end
 
   def add_to_turn
-    @turn = Turn.find_or_initialize_by(strong_params.merge(current_day))
-    if internet_entry?
-      @turn = Turn.find_or_initialize_by(strong_params.merge(internet_day))
-    end
+    find_turn
     if @turn.save
-      add_client(@turn)
+      if add_client(@turn)
+        self.notice = @client if internet_entry?
+      else
+        self.notice = "#{@client.errors.messages.values.join('<br>')}"
+      end
       @services = registration
-      self.notice = "Вы записались на #{params[:turn]}" if internet_entry?
       render :internet_registration if internet_entry?
       redirect_to :registration unless internet_entry?
     else
@@ -38,7 +37,7 @@ class TurnsController < BodyBuilder::Controller
   def add_client(turn)
     @client = Client.new
     @client.turn_id = @turn.id
-    clients = Client.all.select { |client| client.turn_id == @turn.id.to_s }.last
+    clients = Client.select { |client| client.turn_id == @turn.id.to_s }.last
     if internet_entry?
       @client.day = internet_day[:day]
       @client.hour = params[:turn]['hour']
@@ -46,17 +45,6 @@ class TurnsController < BodyBuilder::Controller
     end
     @client.symbol_name_turn = increment_number_turn(clients)
     @client.save
-  end
-
-  def current_day
-    time = Time.now.strftime "%Y-%m-%d"
-    { day: time }
-  end
-
-  def internet_day
-    time = Time.now.strftime "%Y-%m-"
-    time <<  params[:turn]['day']
-    { day: time }
   end
 
   def increment_number_turn(clients)
@@ -70,6 +58,24 @@ class TurnsController < BodyBuilder::Controller
       return "#{symbol_name}И-1" if internet_entry?
       "#{symbol_name}-1" unless internet_entry?
     end
+  end
+
+  def find_turn
+    @turn = Turn.find_or_initialize_by(strong_params.merge(current_day))
+    if internet_entry?
+      @turn = Turn.find_or_initialize_by(strong_params.merge(internet_day))
+    end
+  end
+
+  def current_day
+    time = Time.now.strftime "%Y-%m-%d"
+    { day: time }
+  end
+
+  def internet_day
+    time = Time.now.strftime "%Y-%m-"
+    time <<  params[:turn]['day']
+    { day: time }
   end
 
   def internet_entry?

@@ -2,8 +2,10 @@
 <%= render :head %>
 
 <h4><button class="btn btn-warning">Время и дата: <span id="time"></span> <span id="data"></span></button><h4>
-<p class="text-center">Выберите направление, дату и время приема</p>
-<p class="text-center">Информируем, что очередь чередуется через неколько человек(например вы записаны на 11:00, вас вызовут спустя 2-3 человека)</p></br>
+<div class="alert alert-success" role="alert"><p class="text-center">Выберите направление, дату и время приема</p>
+  <p class="text-center">Информируем, что очередь чередуется с основной очередью через неколько человек</p></br>
+</div>
+
 
   <div class="services_block">
     <form action="add_to_turn" method="get" onsubmit="return checkForm(this)">
@@ -83,7 +85,15 @@
       <input type="hidden" name="turn[internet_entry]">
       <input type="submit" value="Записаться" class="btn btn-success">
     </form>
-    <%= notice %>
+  <% if notice  %>
+    <% if notice.class == String %>
+      <div class="alert alert-danger" role="alert"><%= notice %></div>
+    <% else %>
+      <div class="alert alert-success" role="alert"><%= "Вы записались на #{notice['day']} в #{notice['hour']}:#{notice['minute']}"%><br>
+        <%= "Ваш номер в очереди: #{notice['symbol_name_turn']}. Запишите его"%>
+      </div>
+    <% end %>
+  <% end %>
   </div>
 
 </body>
