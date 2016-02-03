@@ -1,4 +1,5 @@
 require 'active_record'
+require 'active_record/schema_dumper'
 require 'pg'
 require 'logger'
 require 'yaml'
@@ -20,6 +21,20 @@ namespace :generate do
       File.new(mvc, 'w') unless File.exist? mvc
     end
     FileUtils.mkdir_p "app/views/#{args[:name].downcase}"
+  end
+end
+
+namespace :db do
+  desc "Dump current db structure"
+  task :dump => :connect_db do
+    File.open('db/schema_dumper.rb', "w:utf-8") do |file|
+       ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, file)
+    end
+  end
+
+  desc "Load db schema from schema.rb"
+  task :load => :connect_db do
+    ActiveRecord::Schema.load('db/schema.rb')
   end
 end
 

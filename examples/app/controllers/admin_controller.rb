@@ -1,9 +1,11 @@
 class AdminController < BodyBuilder::Controller
+  require_defult_template_for :all
+  
   def index
-    default_template { render(:index, name: 'Евгений', last_name: 'Кунгуров') }
+
   end
 
-  def who_is
-    render :who_is, name: params['name']
+  def users
+    @users = User.all
   end
 end

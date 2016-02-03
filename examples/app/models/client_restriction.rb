@@ -1,5 +1,5 @@
-require "byebug"
 class ClientRestriction < ActiveRecord::Base
+
   def self.max_internet_clients_per_day(internet_day)
     internet_clients = 0
     Turn.select { |turn| turn.day == internet_day }.each do |turn|
@@ -7,7 +7,7 @@ class ClientRestriction < ActiveRecord::Base
         internet_clients += 1 if client.symbol_name_turn.include? 'И'
       end
     end
-    internet_clients == number_internet_clients_per_day.to_i
+    internet_clients >= number_internet_clients_per_day.to_i
   end
 
   def self.max_clients_per_day(current_day)
@@ -17,7 +17,7 @@ class ClientRestriction < ActiveRecord::Base
         clients += 1 if client
       end
     end
-    clients == number_clients_per_day.to_i
+    clients >= number_clients_per_day.to_i
   end
 
   private
@@ -33,4 +33,5 @@ class ClientRestriction < ActiveRecord::Base
   def self.alternate_people
     ClientRestriction.find_by(name: 'Очередность человек').count
   end
+
 end

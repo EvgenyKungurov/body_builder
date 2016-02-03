@@ -1,7 +1,37 @@
 <%= render :head %>
-<button class="btn btn-warning">Время: <%= Time.now.strftime "%H:%M %d-%m-%Y" %></button>
-Количество в очереди
-<% queue.each do |queue| %>
-  <%= queue.inspect %>
-<% end %>
-<span class="label label-success">Success</span>
+<body style="background-color:#d9edf7"  onload="clock()">
+<div class="panel panel-success">
+
+  <div class="panel-heading"><h4><b>Время и дата: <span id="time"></span> <span id="data"></b><br>
+    <b>Государственное казенное учреждение Единый социальный расчетный центр Забайкальского края</b><br>
+    <b>Текущая очередь</b></h4>
+  </div>
+
+ <table class="left">
+   <tr>
+     <td class="alert-info" style="width:200px"><h4><b>Клиент №</b></h4></td>
+     <td class="alert-info" style="width:200px"><h4><b>Кабинет</b></h4></td>
+   </tr>
+   <% turns.each do |turn| %>
+     <% turn.clients.first(5).each do |client| %>
+       <tr>
+          <td><h4><%= client.symbol_name_turn %></h4></td>
+          <td><h4><%= client.user_id %></h4></td>
+     <% end %>
+       </tr>
+   <% end %>
+ </table>
+
+</div>
+
+<div  class="pull-right panel-heading">
+  Клиент № Кабинет 5
+</div>
+
+<script type="text/javascript">
+var all_tr = $('tr');
+$('td button[id="get_client"]').on('click', function () {
+    all_tr.removeClass('selected');
+    $(this).closest('tr').addClass('selected');
+});
+</script>

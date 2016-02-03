@@ -9,9 +9,10 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-8">
+                      <%= yield %>
                     </div>
 <%= render :notification_panel %>
-<%= yield if block_given?%>
+
                 </div>
             </div>
       </div>

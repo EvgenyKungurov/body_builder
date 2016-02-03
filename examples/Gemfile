@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'body_builder', path: '../../body_builder-master'
+gem 'body_builder', path: '../../body_builder'
 gem 'pg'
+gem 'byebug'
+gem 'rails-erd'

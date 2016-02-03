@@ -1,13 +1,16 @@
 require 'erubis'
 require 'body_builder/action_notice'
+require 'body_builder/callbacks/render_callback'
 
 module BodyBuilder
   class Controller
     include BodyBuilder::ActionNotice
+    include BodyBuilder::RenderCallback
     attr_accessor :current_action
     attr_reader :request
 
     def initialize(env)
+      @callbacks = []
       @request ||= Rack::Request.new(env)
     end
 
@@ -43,14 +46,18 @@ module BodyBuilder
       end
     end
 
+    def execute_callbacks(action)
+      @callbacks.include? action
+    end
+
     def render(views_action)
       self.current_action = views_action
       template = File.read(File.join('app', 'views', controller_name, "#{views_action}.html.erb"))
       Erubis::Eruby.new(template).result(instance_variables_hash)
     end
 
-    def default_template(&block)
-      template = File.read(File.join('public', 'application.html.erb'))
+    def render_default_template(&block)
+      template = File.read(File.join('app', 'views', 'layouts', 'application.html.erb'))
       Erubis::Eruby.new(template).evaluate(&block)
     end
 

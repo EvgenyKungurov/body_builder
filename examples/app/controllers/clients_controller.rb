@@ -1,6 +1,11 @@
 class ClientsController < BodyBuilder::Controller
   def index
+    @users = Group.find(2).users
     @notice = notice
+    @clients = Client.all
+  end
+
+  def get_clients
     @clients = Client.all
   end
 

@@ -1,9 +1,10 @@
 class TurnsController < BodyBuilder::Controller
+
   attr_accessor :current_day
   attr_accessor :internet_day
 
   def index
-    @queue = Turn.all
+    @turns = Turn.all
   end
 
   def registration
@@ -85,4 +86,5 @@ class TurnsController < BodyBuilder::Controller
   def strong_params
     params[:turn].permit(:service_id)
   end
+
 end

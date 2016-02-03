@@ -3,7 +3,8 @@ class LogsController < BodyBuilder::Controller
     @logs = Log.all
   end
 
-  def new
+  def vote
+    @services = Service.all
     @notice = notice
   end
 
