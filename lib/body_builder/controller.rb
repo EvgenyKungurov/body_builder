@@ -1,16 +1,19 @@
 require 'erubis'
 require 'body_builder/action_notice'
-require 'body_builder/callbacks/render_callback'
+require 'body_builder/callbacks'
 
 module BodyBuilder
   class Controller
+    extend  BodyBuilder::Callbacks
     include BodyBuilder::ActionNotice
-    include BodyBuilder::RenderCallback
+    attr_accessor :default_template
     attr_accessor :current_action
     attr_reader :request
 
+    @@controller_callbacks = {}
+
     def initialize(env)
-      @callbacks = []
+      @@callbacks = {}
       @request ||= Rack::Request.new(env)
     end
 
@@ -46,8 +49,7 @@ module BodyBuilder
       end
     end
 
-    def execute_callbacks(action)
-      @callbacks.include? action
+    def execute_callbacks(controller_name)
     end
 
     def render(views_action)

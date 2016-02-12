@@ -7,12 +7,11 @@ require 'body_builder/context_helpers'
 require 'body_builder/strong_params'
 require 'body_builder/autoload'
 require 'body_builder/context_helpers'
-require "rails-erd/diagram/graphviz"
 
 module BodyBuilder
   class Application
     def call(env)
-      byebug
+      #byebug
       BodyBuilder::DB.db_connect
       return [ 302, { 'Location' => '/admin/index' } ] if env['PATH_INFO'] == '/'
       return [ 500, {}, [] ] if env['PATH_INFO'] == 'favicon.ico'
@@ -26,6 +25,7 @@ module BodyBuilder
     private
 
     def send_route
+      #byebug
       if @controller.redirection?
         @controller.send(@controller.redirect_path)
         [
@@ -34,13 +34,8 @@ module BodyBuilder
           [@controller.render(@action)]
         ]
       else
-        if @controller.execute_callbacks(@action)
-          result = @controller.render_default_template { @controller.render(@action) }
-          @controller.response(result, 200, headers = {'Content-Type' => 'text/html; charset=utf-8'})
-        else
-          result = @controller.render(@action)
-          @controller.response(result, 200, headers = {'Content-Type' => 'text/html; charset=utf-8'})
-        end
+        result = @controller.render(@action)
+        @controller.response(result, 200, headers = {'Content-Type' => 'text/html; charset=utf-8'})
       end
     end
 
