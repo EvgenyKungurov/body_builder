@@ -13,7 +13,7 @@
      <td class="alert-info" style="width:200px"><h4><b>Кабинет</b></h4></td>
    </tr>
    <% turns.each do |turn| %>
-     <% turn.clients.first(5).each do |client| %>
+     <% turn.clients.select { |client| client.status == nil }.first(5).each do |client| %>
        <tr>
           <td><h4><%= client.symbol_name_turn %></h4></td>
           <td><h4><%= client.user_id %></h4></td>

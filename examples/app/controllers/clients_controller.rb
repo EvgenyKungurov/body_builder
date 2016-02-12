@@ -1,9 +1,9 @@
 class ClientsController < BodyBuilder::Controller
   def index
-    @users = User.select { |user| user.group_id == '2' }
+    @users = User.select { |user| user.group_id == '2' } 
     @notice = notice
-    @clients = Client.select { |client| client.turn.day == current_day }
-
+    @clients = Client.select { |client| client.turn.day == current_day  }.
+      select { |client| client.status == nil }
     @count_turn = 0
     @count_day = 0
     Turn.select { |turn| turn.day == current_day }.map do |turn|
@@ -14,8 +14,20 @@ class ClientsController < BodyBuilder::Controller
     end
   end
 
-  def get_clients
-    @clients = Client.all
+  def get_client
+    @client = Client.find(params[:id])
+    @client.update_attributes(strong_params)
+    if @client.save
+      redirect_to :index
+    end
+  end
+
+  def finish_client
+    @client = Client.find(params[:id])
+    @client.status = "Прием закончен"
+    if @client.save
+      redirect_to :index
+    end
   end
 
   def update

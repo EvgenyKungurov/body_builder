@@ -4,7 +4,7 @@ class TurnsController < BodyBuilder::Controller
   attr_accessor :internet_day
 
   def index
-    @turns = Turn.all
+    @turns = Turn.select { |turn| turn.day == "#{Time.now.strftime "%Y-%m-%d"}" }
   end
 
   def registration

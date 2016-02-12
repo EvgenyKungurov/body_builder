@@ -4,7 +4,7 @@
 <div class="panel panel-success">
 
   <div class="panel-heading"><h4><b>Время и дата: <span id="time"></span> <span id="data"></b>
-    <b><p class="navbar-right">Оператор: <%= users.first.name %>
+    <b><p class="navbar-right">Оператор: <%= users.first.name if users.first %>
       <button class="btn btn-success">Выход</button></h4></p></b>
     <b>Электронная очередь - терминал специалиста<br>
       Статистика: количество в очереди: <%= count_turn %><br>
@@ -23,15 +23,30 @@
     </tr>
 
     <% clients.each do |client| %>
-      <% get_client = '<button class="btn btn-info" id="get_client">Вызвать</button>' %>
-      <% finish_client = '<button class="btn btn-info finish_client">Закончить прием</button>' %>
       <% redirect_client = '<button class="btn btn-info">Переадресовать</button>' %>
       <tr>
         <td style="width:100px"> <%= client.symbol_name_turn %></td>
         <td style="width:100px"> <%= client.hour %></td>
         <td style="width:100px"> <%= client.minute %></td>
-        <td style="width:100px"><%= get_client if clients.first.id == client.id %></td>
-        <td style="width:100px"><%= finish_client if clients.first.id == client.id %></td>
+        <td style="width:100px">
+          <% if clients.first.id == client.id %>
+            <form action='get_client'>
+              <input type='submit' class='btn btn-info' id='get_client' value='Вызвать'>
+              <%= "<input type='hidden' name='id' value=#{client.id}>" %>
+              <% %>
+              <%= "<input type='hidden' name='client[id]' value=#{users.first.id}>" %>
+            </form>
+          <% end %>
+        </td>
+        <td style="width:100px">
+          <% if clients.first.id == client.id %>
+            <form action='finish_client'>
+              <input type='submit' class='btn btn-info' id='get_client' value='Закончить прием'>
+              <%= "<input type='hidden' name='id' value=#{client.id}>" %>
+              <%= "<input type='hidden' name='client[id]' value=#{users.first.id}>" %>
+            </form>
+          <% end %>
+        </td>
         <td style="width:500px">
           <select class="btn" name="">
             <option>Выберите адресата</option>
