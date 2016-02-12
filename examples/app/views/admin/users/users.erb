@@ -1,5 +1,0 @@
-Пользователи:
-<% users.each do |user| %>
-<p> <%= user.name %> <%= user.group.name %> <%= "<a href=/users/edit?id=#{user.id}>" %>Редактировать</a> <%= "<a href=/users/destroy?id=#{user.id}>" %>Удалить</a></p>
-<% end %>
-<a href="new">Добавить нового пользователя</a>

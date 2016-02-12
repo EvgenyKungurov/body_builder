@@ -1,4 +1,5 @@
 Сервисы <% services.each do |service| %>
 <p>  <%= service.name %> <%= "<a href=/services/edit?id=#{service.id}>" %>Редактировать</a> <%= "<a href=/services/destroy?id=#{service.id}>" %>Удалить</a></p>
 <% end %>
-<a href="new">Добавить новый сервис</a>
+<a href="new">Добавить новый сервис</a><br>
+<a href="http://localhost:9292/admin/index">На главную</a>

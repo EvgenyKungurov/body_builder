@@ -1,11 +1,14 @@
+<body style="background-color:white;">
+<%= render :head %>
 <p><%= notice %></p>
 <form action="create" method="get">
-  Имя: <input type="text" name="user[name]"><br>
+  Имя: <input class="form-control" type="text" name="user[name]"><br>
   Группа:
   <p><select size="1" name="user[group_id]">
     <% groups.each do |group| %>
-        <option value="<%= group.id %>"><%= group.name %></option>
+        <option class="form-control" value="<%= group.id %>"><%= group.name %></option>
     <% end %>
    </select></p>
-  <input type="submit" value="Submit">
+  <input  type="submit" value="Сохранить">
 </form>
+</body>

@@ -1,8 +1,17 @@
 class ClientsController < BodyBuilder::Controller
   def index
-    @users = Group.find(2).users
+    @users = User.select { |user| user.group_id == '2' }
     @notice = notice
-    @clients = Client.all
+    @clients = Client.select { |client| client.turn.day == current_day }
+
+    @count_turn = 0
+    @count_day = 0
+    Turn.select { |turn| turn.day == current_day }.map do |turn|
+      turn.clients.each do |client|
+        @count_turn +=1 if client.status == nil
+        @count_day +=1
+      end
+    end
   end
 
   def get_clients
@@ -37,6 +46,10 @@ class ClientsController < BodyBuilder::Controller
   end
 
   private
+
+  def current_day
+    Time.now.strftime "%Y-%m-%d"
+  end
 
   def strong_params
     params[:client].permit(:status, :user_id, :recorded_on, :symbol_name_turn, :turn_id)

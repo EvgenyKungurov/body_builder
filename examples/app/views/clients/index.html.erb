@@ -7,8 +7,8 @@
     <b><p class="navbar-right">Оператор: <%= users.first.name %>
       <button class="btn btn-success">Выход</button></h4></p></b>
     <b>Электронная очередь - терминал специалиста<br>
-      Статистика: количество в очереди: <%= clients.select { |client| client.status == nil }.size %><br>
-      За день: <%= clients.count %>
+      Статистика: количество в очереди: <%= count_turn %><br>
+      За день: <%= count_day %>
 
   </div>
 
